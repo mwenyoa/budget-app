@@ -1,0 +1,24 @@
+{
+  "name": "budget-app",
+  "version": "1.0.0",
+  "description": "Bugget App is about building a mobile web application where you can manage your budget: you have a list of transactions associated with a category, so that you can see how much money you spent and on what.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mwenyoa/budget-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mwenyoa/budget-app/issues"
+  },
+  "homepage": "https://github.com/mwenyoa/budget-app#readme"
+}
