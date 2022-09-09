@@ -3,7 +3,7 @@
 # Coin Plan
 > Coin Plan is a mobile web application that allows you to manage your budget: you have a list of transactions associated with a category, so that you can see how much money you spent and on what.
 ----
-_[Here](https://www.loom.com/share/9ca8b62a3c9042b68cb9e945b0a4e42e) is the link to the project presentation video_
+_[Here](https://www.loom.com/share/bbe5adcebf0b4f5aaa44be4fbffb9f4c) is the link to the project presentation video_
 
 _[Here](https://enigmatic-bayou-80296.herokuapp.com/) is the link to the live demo_
 
