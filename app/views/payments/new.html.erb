@@ -1,0 +1,31 @@
+
+<div class="container-fluid">
+    <div class="row d-flex justify-content-center">
+        <div class="col-12 my-4">
+            <%= link_to raw('<i class="fa-solid fa-angle-left fa-2x"></i>'), root_path %>
+           </div>
+        <div class="col-12 d-flex justify-content-center">
+            <% if @transaction.errors.any?  %>
+            <%= raw('<h6 class="text-center">Beacause: </h6>') %>
+            <div class="d-coulumn justify-content-center">
+                <% @transaction.errors.full_messages.each_with_index do |message, index|%>
+                <br><p class="d-column justify-content-start"><%=  index+1 %>. <%= message %> </p>
+               <%end%>
+            </div>
+          <%end%>
+        </div>
+        <div class="col-md-6  card p-4 m-5">
+           <%=  form_with model:  @transaction, url: user_category_payments_path, data: { turbo:false } do |f| %>
+           <%= f.text_field :name, placeholder:'Trnsaction Name', class: 'form-control p-3 my-3'%>
+           <%= f.number_field :amount,  placeholder: 'Amount', min:'0',  class: 'form-control p-3 my-3'%>
+           <div class="form-control p-3 my-3">
+            <%= f.label :category %>
+            <%= f.collection_select :category_id, Category.where(user_id: current_user.id).order(:name),:id,:name %>
+          </div>
+           <div class="d-flex justify-content-end">
+            <%= f.submit "Save", disable_with: 'Submiting...', class:'btn btn-success p-3 d-flex justify-content-end' %>
+           </div>
+           <% end %>
+        </div>
+    </div>
+</div>

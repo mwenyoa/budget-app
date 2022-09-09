@@ -1,0 +1,40 @@
+
+<section class="container my-4">
+    <div class="row">
+        <div class="col-12">
+            <h3 class="d-flex justify-content-center">Budget Categories</h3>
+        </div>
+        </div>
+        <div class="col-12">
+        <div class="container-fluid">
+             
+            <% @category.each do |cat| %>
+            <div class="row d-flex justify-content-between budget-item my-3 bg-white px-2">
+              <div class="my-4 cat-icon col-3 d-column">
+               <p><% if cat.icon.present? %>
+                  <%= image_tag(cat.icon)%>
+                  <% end %></p>
+              </div>
+          <div class="my-4 col-4">
+              <p class="">
+                  <%= link_to cat[:name], user_category_payments_path(current_user.id, cat[:id])%>
+              </p>
+              <p class="mb-0 opacity-50"><%= l cat.created_at.to_date, format: :long %></p>
+          </div>
+          <div class="my-4 col-3"> <p>$<%= Payment.where(category_id: cat.id).reduce(0) { |sum, t| sum + t.amount+0.00} %></p></div>
+          <div class="col-2">
+              <%= button_to "",user_category_path(current_user.id, cat.id), data: {turbo:false}, method: :delete,
+               class: 'fa fa-trash fa-2x bg-white my-4 text-danger'%>
+          </div>
+          </div>
+         <% end %>
+        </div>
+        </div>
+
+    </div><br><br><br>
+</section>
+<section class="btn-wrapper d-grid gap-2 d-md-block">
+    <button class="btn-main bg-success text-white form-control" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add Category">
+      <%= link_to 'ADD CATEGORY',new_user_category_path(current_user.id),   class:'btn btn-success  form-control p-3 d-flex justify-content-center' %>
+</button>
+</section>
