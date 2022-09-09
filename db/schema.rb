@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_05_090712) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_07_172547) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,22 +51,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_05_090712) do
     t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
-  create_table "category_transactions", force: :cascade do |t|
+  create_table "category_payments", force: :cascade do |t|
     t.bigint "category_id", null: false
-    t.bigint "transaction_id", null: false
+    t.bigint "payment_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_category_transactions_on_category_id"
-    t.index ["transaction_id"], name: "index_category_transactions_on_transaction_id"
+    t.index ["category_id"], name: "index_category_payments_on_category_id"
+    t.index ["payment_id"], name: "index_category_payments_on_payment_id"
   end
 
-  create_table "transactions", force: :cascade do |t|
+  create_table "payments", force: :cascade do |t|
     t.string "name"
-    t.float "amount"
+    t.integer "amount", default: 0
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_transactions_on_user_id"
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_payments_on_category_id"
+    t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -89,7 +91,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_05_090712) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "categories", "users"
-  add_foreign_key "category_transactions", "categories"
-  add_foreign_key "category_transactions", "transactions"
-  add_foreign_key "transactions", "users"
+  add_foreign_key "category_payments", "categories"
+  add_foreign_key "category_payments", "payments"
+  add_foreign_key "payments", "categories"
+  add_foreign_key "payments", "users"
 end
