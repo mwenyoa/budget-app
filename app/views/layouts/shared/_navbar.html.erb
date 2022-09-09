@@ -1,26 +1,19 @@
-<header class="p-4 bg-primary">
+<header class="p-4">
     <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-around">
-            <h3><a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                <i class='fas fa-seedling mx-4 fa-1x'> </i>  Budget Plus
-            </a></h3>
+        <div class="d-flex flex-wrap align-items-between justify-content-between  nav-menu">
+    
 
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <% if user_signed_in? %>   
-                    <li><%= link_to "Categories", user_categories_path(current_user), class:"nav-link px-2 mx-3 text-white"%></li>  
-                    <li><%= link_to "Transactions", user_transactions_path(current_user), class:"nav-link px-2 mx-3 text-white"%></li>
-                <% end %>
+            <ul class="nav col-12 col-lg-auto me-lg-auto py-0 d-flex justify-content-between mb-md-0">
+                <a href="/" class="d-flex justify-content-start   text-white text-decoration-none">
+                    <h2><i class="fa-solid fa-coins"></i>  Coin Plan</h2>
+                </a>
+                 <% if user_signed_in? %>
+                <li class="log-out mx-5 d-flex justify-content-end">
+                    <%= button_to "Log Out", destroy_user_session_path, method: :delete, data: { turbo: false }, class:"btn btn-light ml-5" %>
+                </li>  
+                <% else %> <% end %>
             </ul>
-            <% if user_signed_in? %>
-                <div class="text-end">
-                    <%= button_to "Log Out", destroy_user_session_path, method: :delete, data: { turbo: false }, class:"btn btn-light" %>
-                </div>  
-            <% else %>
-                <div class="text-end">
-                    <%= link_to 'Sign up', new_user_registration_path, class:"btn btn-salmon" %>
-                    <%= link_to 'Login', new_user_session_path, class: "btn btn-outline-light me-2"%>
-                </div>
-            <% end %>
+           
         </div>
     </div>
   </header>

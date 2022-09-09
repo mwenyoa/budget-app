@@ -1,0 +1,56 @@
+<section class="container-fluid my-4">
+    <div class="row">
+        <div class="col-12 my-1">
+            <%= link_to raw('<i class="fa-solid fa-angle-left fa-2x"></i>'), root_path %>
+            <h1 class="text-primary d-flex justify-content-center">TRANSACTIONS</h1>
+           </div>
+        <div class="col-12">
+            <h3 class="d-flex justify-content-center py-2 px-5">
+            </h3>
+        </div>
+        </div>
+        <div class="col-12 container">
+            <p class="text-primary d-flex justify-content-start">
+                <% if @category.name.present? %>
+                <h3 class="text-primary"><%= @category.name %></h3>
+                <% end %>
+            </p>
+            <h4 class="text-primary d-flex justify-content-end "> Total Amount:
+                $<%= Payment.where(category_id: @category.id).reduce(0) { |sum, t| sum + t.amount+0.0}  %></h4>
+         </div>
+            <div class="container">
+           <% @transaction.each do |t|  %>
+              <div class="row d-flex justify-content-between budget-item my-2 bg-white px-2">
+                <div class="my-4 cat-icon col-3 d-flex justify-content-between">
+                <% if @category.icon.present? %>
+                    <%= image_tag(@category.icon)%>
+                <% end %>
+                </div>
+                     
+               <div class="d-column col-6">
+                <h4 class="my-4"><%= t.name %></h4>
+                <p class="my-4"><%= l t.created_at.to_date, format: :long %></p>
+               </div>
+                <div class="col-3">
+                    <p class="my-4"><%= t.amount+0.0 %></p>
+                </div>
+            </div>
+           <% end %>
+
+
+           
+
+           
+        </div>
+        <div class="col-12">
+            <p class="d-flex  justify-content-end py-4">
+           
+            </p>
+        </div>
+    </div>
+</section>
+<section class="btn-wrapper d-grid gap-2 d-md-block mb-0">
+    <button class="btn-main bg-success text-white" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add Category">
+        <%= link_to "Add New Transaction", new_user_category_payment_path(current_user.id, @category.id), 
+        class:'btn btn-success  form-control p-3 d-flex justify-content-center' %>
+</button>
