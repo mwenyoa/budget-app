@@ -11,3 +11,116 @@
   font-weight: 800;
   text-align: center;
 }
+
+img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.budget-item,
+.btn {
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 5px 0 rgb(0 0 0 / 75%);
+  background-color: #fff;
+}
+
+.btn {
+  text-align: center;
+}
+
+header {
+  box-shadow: 0 0 5px 0 rgb(0 0 0 / 75%);
+  background-color: rgb(6 79 163);
+}
+
+.btn-success {
+  font-weight: bold;
+}
+
+.fa-trash {
+  border-radius: 8px;
+  box-shadow: 0 0 5px 0 rgb(0 0 0 / 75%);
+}
+
+.splash {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+}
+
+.splash,
+.btn {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.splash img {
+  display: flex;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  max-width: 50%;
+  margin-top: calc(var(--header-height) + 10vh);
+  margin-bottom: 5vh;
+}
+
+.splash .actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  margin: 10px auto;
+  text-align: center;
+}
+
+.splash .actions .btn {
+  box-shadow: 0 0 5px 0 rgb(0 0 0 / 75%);
+  background-color: rgb(6 79 163);
+  color: #fff;
+  margin-top: 20px;
+  padding: 10px;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 600px) {
+  header .nav-menu,
+  ul,
+  .log-out {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .btn-wrapper {
+    background-color: #fff;
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+  }
+
+  .btn-main a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: bold;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .btn-wrapper {
+    background-color: #fff;
+    width: 50%;
+    height: 80px;
+    margin: 0 auto;
+  }
+
+  .btn-main a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: bold;
+  }
+}
