@@ -30,10 +30,10 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     if @category.destroy
       flash[:notice] = 'Category Successfully Deleted!'
-      redirect_to user_categories_path(current_user)
+      redirect_to user_categories_path(current_user.id)
     else
       flash[:alert] = 'Error prevented the category from being deleted!'
-      redirect_to user_categories_path(current_user)
+      redirect_to user_categories_path(current_user.id)
     end
   end
 
