@@ -18,7 +18,7 @@ class CategoriesController < ApplicationController
     @user = current_user
     @category = @user.categories.new(category_params)
     if @category.save
-      flash[:notice] = 'Budget ccategory successfully created!'
+      flash[:notice] = 'Budget category successfully created!'
       redirect_to user_categories_path(current_user)
     else
       flash[:alert] = 'Category could not be created!'
@@ -30,11 +30,10 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     if @category.destroy
       flash[:notice] = 'Category Successfully Deleted!'
-      redirect_to user_categories_path(current_user.id)
     else
       flash[:alert] = 'Error prevented the category from being deleted!'
-      redirect_to user_categories_path(current_user.id)
     end
+    redirect_to user_categories_path(current_user)
   end
 
   private
